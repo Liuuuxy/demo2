@@ -19,7 +19,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/banner_pic_bg"
-        imageUrl=""
+        imageUrl="@{model.image}"
         />
 
 

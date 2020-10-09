@@ -17,12 +17,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.demo2.model.Data;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CustomViewBinding {
-    @BindingAdapter("setAdapter")
+    @BindingAdapter(value={"setAdapter","data"},requireAll = false)
     public static void bindRecyclerViewAdapter(RecyclerView recyclerView, RecyclerView.Adapter<?> adapter,
-                                               MutableLiveData<ArrayList<Data>> data) {
+                                               MutableLiveData<List<Data>> data) {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         recyclerView.setAdapter(adapter);

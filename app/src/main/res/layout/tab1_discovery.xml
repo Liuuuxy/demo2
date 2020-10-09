@@ -24,7 +24,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/recycler_item_image"
+                data="@{viewModel.dataHor}"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -58,7 +60,9 @@
                 android:layout_marginTop="265dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/recycler_item_square"
+                data="@{viewModel.dataSqu"/>
 
             <TextView
                 android:id="@+id/textView9"

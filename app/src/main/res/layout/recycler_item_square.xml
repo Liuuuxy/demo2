@@ -21,7 +21,8 @@
             android:layout_height="105dp"
             android:layout_width="105dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            imageUrl="@{model.image}"/>
 
         <TextView
             android:layout_height="20dp"
@@ -30,7 +31,7 @@
             android:shadowDx="0"
             android:shadowDy="2"
             android:shadowRadius="3.0"
-            android:text="文字说明"
+            android:text="@{model.title}"
             android:textColor="#ffffffff"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"

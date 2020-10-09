@@ -1,5 +1,7 @@
 package com.example.demo2;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -12,9 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.demo2.databinding.Tab1DiscoveryBinding;
+
 public class Tab1 extends Fragment {
 
     private Tab1ViewModel mViewModel;
+    private Tab1DiscoveryBinding binding;
 
     public static Tab1 newInstance() {
         return new Tab1();
@@ -23,14 +28,20 @@ public class Tab1 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.tab1_discovery, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.tab1_discovery, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(Tab1ViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(Tab1ViewModel.class);
         // TODO: Use the ViewModel
+        binding.setViewModel(mViewModel);
+        binding.executePendingBindings();
+        binding.getViewModel().setDataHor();
+        binding.getViewModel().setDataSqu();
     }
 
 }

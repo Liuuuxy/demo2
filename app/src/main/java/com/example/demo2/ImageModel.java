@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ImageModel {
 
-    ListOfList list;
+    ListOfList list=new ListOfList();
 
     List<Data> hor1 = new ArrayList<>();//horizontalScrollCard   banner 轮播图
     List<Data> itemLists2 = new ArrayList<>();//specialSquareCardCollection 热门分类
@@ -44,7 +44,7 @@ public class ImageModel {
             public void onResponse(Call<Bean> call, Response<Bean> response) {
                 List<ItemList> itemLists = response.body().getItemList();
                 for (ItemList itemList : itemLists) {
-                    //Log.d("response========>type:",itemList.getType());
+                    Log.d("response========>type:",itemList.getType());
                     if (itemList.type.equals("textCard")) {
                         textCards.add(itemList.getData());
                         //Log.i("response1===========>", textCards.get(0).getData().getActionUrl());
@@ -57,7 +57,7 @@ public class ImageModel {
                     } else if (itemList.type.equals("horizontalScrollCard")) {
                         for (ItemList.ChildData.ItemList2 l2 : itemList.getData().getItemList())
                             hor1.add(l2.getData());
-
+                        Log.i("hor",hor1.get(0).getDataType());
                     } else if (itemList.type.equals("specialSquareCardCollection")) {
                         for (ItemList.ChildData.ItemList2 l2 : itemList.getData().getItemList())
                             itemLists2.add(l2.getData());
@@ -83,4 +83,5 @@ public class ImageModel {
         });
         return list;
     }
+
 }
