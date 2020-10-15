@@ -6,7 +6,7 @@ package com.example.demo2.model;
  * description :
  */
 public class Data {
-    String dataType;
+    private String dataType;
     private String image;
     private String title;
 

@@ -5,9 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="position"
-            type="java.lang.Integer" />
-        <variable
             name="model"
             type="com.example.demo2.model.Data" />
     </data>

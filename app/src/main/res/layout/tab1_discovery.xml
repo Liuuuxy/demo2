@@ -26,6 +26,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/recycler_item_image"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 data="@{viewModel.dataHor}"/>
 
             <TextView
@@ -62,7 +63,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/recycler_item_square"
-                data="@{viewModel.dataSqu"/>
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                data="@{viewModel.dataSqu}"/>
 
             <TextView
                 android:id="@+id/textView9"

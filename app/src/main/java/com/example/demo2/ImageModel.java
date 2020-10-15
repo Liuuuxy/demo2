@@ -44,7 +44,7 @@ public class ImageModel {
             public void onResponse(Call<Bean> call, Response<Bean> response) {
                 List<ItemList> itemLists = response.body().getItemList();
                 for (ItemList itemList : itemLists) {
-                    Log.d("response========>type:",itemList.getType());
+                    Log.d("response========>type",itemList.getType());
                     if (itemList.type.equals("textCard")) {
                         textCards.add(itemList.getData());
                         //Log.i("response1===========>", textCards.get(0).getData().getActionUrl());

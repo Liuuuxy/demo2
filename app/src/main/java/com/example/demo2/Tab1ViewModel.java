@@ -1,5 +1,6 @@
 package com.example.demo2;
 
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.databinding.ObservableArrayMap;
@@ -14,7 +15,6 @@ import java.util.List;
 
 public class Tab1ViewModel extends ViewModel {
 
-    private ApplicationAdapter applicationAdapter;
     private ImageModel imageModel=new ImageModel();
     private ListOfList list;
     public ObservableArrayMap<String, String> images;
@@ -24,21 +24,14 @@ public class Tab1ViewModel extends ViewModel {
     public Fragment fragment;
 
     public void setDataHor(){
+        Log.d("================",String.valueOf(imageModel.setHttp().getHor1()==null));
         dataHor.setValue(imageModel.setHttp().getHor1());
+        Log.d("vmdataHor========>",String.valueOf(dataHor.getValue()==null));
     }
 
     public void setDataSqu() {
         dataSqu.setValue(imageModel.setHttp().getItemLists2());
     }
 
-    public void fetchHorImageAt(Integer index) {
-        String url = list.getHor1().get(index).getImage();
-        //images.put(getImage(),url);
-    }
-
-    public void fetchSquareImageAt(Integer index) {
-        String url = list.getItemLists2().get(index).getImage();
-
-    }
 
 }

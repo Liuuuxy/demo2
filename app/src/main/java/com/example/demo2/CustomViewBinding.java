@@ -8,6 +8,7 @@ package com.example.demo2;
 
 import android.widget.ImageView;
 
+import androidx.annotation.LayoutRes;
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,15 +21,21 @@ import com.example.demo2.model.Data;
 import java.util.List;
 
 public class CustomViewBinding {
-    @BindingAdapter(value={"setAdapter","data"},requireAll = false)
-    public static void bindRecyclerViewAdapter(RecyclerView recyclerView, RecyclerView.Adapter<?> adapter,
+    @BindingAdapter(value = "data")
+    public static void bindRecyclerViewAdapter(RecyclerView recyclerView,
                                                MutableLiveData<List<Data>> data) {
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(adapter);
+        if (recyclerView.getAdapter() == null) {
+            recyclerView.setAdapter(new ApplicationAdapter(data.getValue()));
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        } else {
+            if (recyclerView.getAdapter() instanceof ApplicationAdapter){
+                ((ApplicationAdapter) recyclerView.getAdapter()).updateData(data.getValue());
+            }
+        }
     }
 
-    @BindingAdapter("imageUrl")
+    @BindingAdapter(value = "imageUrl")
     public static void bindRecyclerViewAdapter(ImageView imageView, String imageUrl) {
 
         // If we don't do this, you'll see the old image appear briefly
