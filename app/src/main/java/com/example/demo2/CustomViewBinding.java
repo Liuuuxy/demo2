@@ -18,6 +18,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.demo2.model.Data;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class CustomViewBinding {
@@ -36,7 +38,7 @@ public class CustomViewBinding {
     }
 
     @BindingAdapter(value = "imageUrl")
-    public static void bindRecyclerViewAdapter(ImageView imageView, String imageUrl) {
+    public static void bindRecyclerViewAdapter(@NotNull ImageView imageView, String imageUrl) {
 
         // If we don't do this, you'll see the old image appear briefly
         // before it's replaced with the current image

@@ -32,7 +32,8 @@ public class ImageModel {
     List<ItemList.ChildData> videos = new ArrayList<>();//videoSmallCard 本周榜单
     List<ItemList.ChildData> briefCards = new ArrayList<>();///briefCard 推荐主题
 
-    public ListOfList setHttp() {
+    public void setHttp(final DataCallBack newsCallBack) {
+        final List<ItemList>[] itemLists = new List[]{new ArrayList<>()};
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://baobab.kaiyanapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -42,37 +43,7 @@ public class ImageModel {
         call.enqueue(new Callback<Bean>() {
             @Override
             public void onResponse(Call<Bean> call, Response<Bean> response) {
-                List<ItemList> itemLists = response.body().getItemList();
-                for (ItemList itemList : itemLists) {
-                    Log.d("response========>type",itemList.getType());
-                    if (itemList.type.equals("textCard")) {
-                        textCards.add(itemList.getData());
-                        //Log.i("response1===========>", textCards.get(0).getData().getActionUrl());
-                    } else if (itemList.type.equals("banner")) {
-                        //banners.add(itemList);
-                    } else if (itemList.type.equals("videoSmallCard")) {
-                        videos.add(itemList.getData());
-                    } else if (itemList.type.equals("briefCard")) {
-                        briefCards.add(itemList.getData());
-                    } else if (itemList.type.equals("horizontalScrollCard")) {
-                        for (ItemList.ChildData.ItemList2 l2 : itemList.getData().getItemList())
-                            hor1.add(l2.getData());
-                        Log.i("hor",hor1.get(0).getDataType());
-                    } else if (itemList.type.equals("specialSquareCardCollection")) {
-                        for (ItemList.ChildData.ItemList2 l2 : itemList.getData().getItemList())
-                            itemLists2.add(l2.getData());
-                    } else if (itemList.type.equals("columnCardList")) {
-                        for (ItemList.ChildData.ItemList2 l2 : itemList.getData().getItemList())
-                            column.add(l2.getData());
-                    }
-                }
-                list.setHor1(hor1);
-                list.setItemLists2(itemLists2);
-                list.setColumn(column);
-                list.setTextCards(textCards);
-                //list.setBanners(banners);
-                list.setVideos(videos);
-                list.setBriefCards(briefCards);
+                newsCallBack.onSuccess(response.body().getItemList());
             }
 
             @Override
@@ -81,7 +52,39 @@ public class ImageModel {
                 Log.i("aa", "onErro=====>" + t.getMessage());
             }
         });
-        return list;
     }
+/*
+* for (ItemList itemList : itemLists) {
+                            Log.d("response========>type",itemList.getType());
+                            if (itemList.type.equals("textCard")) {
+                                textCards.add(itemList.getData());
+                                //Log.i("response1===========>", textCards.get(0).getData().getActionUrl());
+                            } else if (itemList.type.equals("banner")) {
+                                //banners.add(itemList);
+                            } else if (itemList.type.equals("videoSmallCard")) {
+                                videos.add(itemList.getData());
+                            } else if (itemList.type.equals("briefCard")) {
+                                briefCards.add(itemList.getData());
+                            } else if (itemList.type.equals("horizontalScrollCard")) {
+                                for (ItemList.ChildData.ItemList2 l2 : itemList.getData().getItemList())
+                                    hor1.add(l2.getData());
+                                Log.i("hor",hor1.get(0).getDataType());
+                            } else if (itemList.type.equals("specialSquareCardCollection")) {
+                                for (ItemList.ChildData.ItemList2 l2 : itemList.getData().getItemList())
+                                    itemLists2.add(l2.getData());
+                            } else if (itemList.type.equals("columnCardList")) {
+                                for (ItemList.ChildData.ItemList2 l2 : itemList.getData().getItemList())
+                                    column.add(l2.getData());
+                            }
+                        }
+                        list.setHor1(hor1);
+                        list.setItemLists2(itemLists2);
+                        list.setColumn(column);
+                        list.setTextCards(textCards);
+                        //list.setBanners(banners);
+                        list.setVideos(videos);
+                        list.setBriefCards(briefCards);
+                        return list;
+                    }*/
 
 }

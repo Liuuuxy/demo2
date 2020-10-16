@@ -1,6 +1,5 @@
 package com.example.demo2;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +75,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mData==null?0:mData.size();
     }
 
     @Override
