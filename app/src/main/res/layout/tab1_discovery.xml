@@ -12,7 +12,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,50 +21,51 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
+                data="@{viewModel.dataHor}"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="210dp"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/recycler_item_image"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                data="@{viewModel.dataHor}"/>
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="23dp"
-                android:fontFamily="@font/noto_sans_bold"
-                android:text="热门分类"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.03597"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+                tools:layout_editor_absoluteX="0dp"
+                tools:listitem="@layout/recycler_item_image" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="23dp"
-                android:text="查看全部分类"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                android:text="热门分类"
+                android:fontFamily="@font/noto_sans_bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+                app:layout_constraintVertical_bias="0.666" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查看全部"
+                app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.933"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toTopOf="@+id/textView2"
+                app:layout_constraintVertical_bias="1.0" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView2"
+                data="@{viewModel.dataSqu}"
                 android:layout_width="match_parent"
                 android:layout_height="226dp"
                 android:layout_marginTop="265dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/recycler_item_square"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                data="@{viewModel.dataSqu}"/>
+                tools:listitem="@layout/recycler_item_square" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -84,7 +85,7 @@
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="23dp"
+                android:layout_marginEnd="16dp"
                 android:text="查看全部"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -98,6 +99,7 @@
 
             <ImageView
                 android:id="@+id/imageView"
+                imageUrl="@{viewModel.dataCol.get(0).image}"
                 android:layout_width="170dp"
                 android:layout_height="91dp"
                 android:layout_marginStart="10dp"
@@ -109,7 +111,7 @@
             <TextView
                 android:layout_width="48dp"
                 android:layout_height="12dp"
-                android:text="文字说明"
+                android:text="@{viewModel.dataCol.get(0).title}"
                 android:textColor="#ffffffff"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -119,6 +121,7 @@
 
             <ImageView
                 android:id="@+id/imageView2"
+                imageUrl="@{viewModel.dataCol.get(1).image}"
                 android:layout_width="170dp"
                 android:layout_height="91dp"
                 android:layout_marginStart="10dp"
@@ -130,7 +133,7 @@
             <TextView
                 android:layout_width="48dp"
                 android:layout_height="12dp"
-                android:text="文字说明"
+                android:text="@{viewModel.dataCol.get(1).title}"
                 android:textColor="#ffffffff"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView2"

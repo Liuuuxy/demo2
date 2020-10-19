@@ -63,10 +63,10 @@ public class ApplicationAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         if (viewType == VIEW_TYPE_HORIZONTAL) {
-            RecyclerItemImageBinding binding1 = DataBindingUtil.inflate(layoutInflater, viewType, parent, false);
+            RecyclerItemImageBinding binding1 = DataBindingUtil.inflate(layoutInflater, R.layout.recycler_item_image, parent, false);
             return new ViewHolderOne(binding1);
         } else if (viewType == VIEW_TYPE_SQUARE) {
-            RecyclerItemSquareBinding binding = DataBindingUtil.inflate(layoutInflater, viewType, parent, false);
+            RecyclerItemSquareBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.recycler_item_square, parent, false);
             return new ViewHolderTwo(binding);
         }
         return null;

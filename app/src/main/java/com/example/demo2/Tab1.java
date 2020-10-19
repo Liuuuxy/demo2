@@ -41,6 +41,12 @@ public class Tab1 extends Fragment {
         binding.executePendingBindings();
         binding.getViewModel().setDataHor();
         binding.getViewModel().setDataSqu();
+        binding.getViewModel().setDataCol();
+
+        mViewModel.dataHor.observe(getViewLifecycleOwner(), data -> {
+            CustomViewBinding.bindRecyclerViewAdapter(binding.recyclerView, mViewModel.dataHor);
+        });
+
     }
 
 }

@@ -29,7 +29,7 @@ public class CustomViewBinding {
         if (recyclerView.getAdapter() == null) {
             recyclerView.setAdapter(new ApplicationAdapter(data.getValue()));
             recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(),LinearLayoutManager.HORIZONTAL,false));
         } else {
             if (recyclerView.getAdapter() instanceof ApplicationAdapter){
                 ((ApplicationAdapter) recyclerView.getAdapter()).updateData(data.getValue());
