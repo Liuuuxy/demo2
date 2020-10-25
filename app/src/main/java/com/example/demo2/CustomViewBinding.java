@@ -6,11 +6,13 @@ package com.example.demo2;
  * description :
  */
 
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.annotation.LayoutRes;
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.MutableLiveData;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,10 +30,16 @@ public class CustomViewBinding {
                                                MutableLiveData<List<Data>> data) {
         if (recyclerView.getAdapter() == null) {
             recyclerView.setAdapter(new ApplicationAdapter(data.getValue()));
+         //   Log.i("data binding","------"+data.getValue().get(0).getDataType());
             recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(),LinearLayoutManager.HORIZONTAL,false));
+           if (data.getValue().get(0).getDataType().equals("Banner"))
+                recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false));
+           else if (data.getValue().get(0).getDataType().equals("SquareCard")) {
+                recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 3,GridLayoutManager.HORIZONTAL,false));
+                Log.i("grid","gridlayoutset=======");
+            }
         } else {
-            if (recyclerView.getAdapter() instanceof ApplicationAdapter){
+            if (recyclerView.getAdapter() instanceof ApplicationAdapter) {
                 ((ApplicationAdapter) recyclerView.getAdapter()).updateData(data.getValue());
             }
         }

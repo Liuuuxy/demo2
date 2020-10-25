@@ -22,9 +22,11 @@ public class Tab1ViewModel extends ViewModel {
     public MutableLiveData<List<Data>> dataHor = new MutableLiveData<>();
     public MutableLiveData<List<Data>> dataSqu = new MutableLiveData<>();
     public MutableLiveData<List<Data>> dataCol = new MutableLiveData<>();
+    public MutableLiveData<List<ItemList.ChildData>> dataVideo=new MutableLiveData<>();
     List<Data> hor1 = new ArrayList<>();//horizontalScrollCard   banner 轮播图
     List<Data> itemLists2 = new ArrayList<>();//specialSquareCardCollection 热门分类
     List<Data> column = new ArrayList<>();//columnCardList 专题策划
+    List<ItemList.ChildData> videos = new ArrayList<>();//videoSmallCard 本周榜单
 
     public Fragment fragment;
 
@@ -52,7 +54,7 @@ public class Tab1ViewModel extends ViewModel {
                 if (itemList.type.equals("specialSquareCardCollection")) {
                     for (ItemList.ChildData.ItemList2 l2 : itemList.getData().getItemList())
                         itemLists2.add(l2.getData());
-                    Log.i("square", itemLists2.get(0).getDataType());
+                    Log.i("square", itemLists2.get(0).getImage());
                     dataSqu.setValue(itemLists2);
                 }
             }
@@ -75,5 +77,18 @@ public class Tab1ViewModel extends ViewModel {
         Log.d("vmdatacol========>", String.valueOf(dataCol.getValue() == null));
     }
 
-
+    public void setDataVideo() {
+        //Log.d("================",String.valueOf(imageModel.setHttp().getHor1()==null));
+        imageModel.setHttp(itemLists -> {
+            for (ItemList itemList : itemLists) {
+                Log.d("response========>type", itemList.getType());
+                if (itemList.type.equals("videoSmallCard")) {
+                    videos.add(itemList.getData());
+                    Log.i("Video", videos.get(0).getCover().feed);
+                    dataVideo.setValue(videos);
+                }
+            }
+        });
+        Log.d("vmdatacol========>", String.valueOf(dataCol.getValue() == null));
+    }
 }

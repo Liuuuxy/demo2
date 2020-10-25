@@ -38,10 +38,11 @@ public class Tab1 extends Fragment {
         mViewModel = new ViewModelProvider(this).get(Tab1ViewModel.class);
         // TODO: Use the ViewModel
         binding.setViewModel(mViewModel);
-        binding.executePendingBindings();
         binding.getViewModel().setDataHor();
         binding.getViewModel().setDataSqu();
         binding.getViewModel().setDataCol();
+        binding.getViewModel().setDataVideo();
+        binding.executePendingBindings();
 
         mViewModel.dataHor.observe(getViewLifecycleOwner(), data -> {
             CustomViewBinding.bindRecyclerViewAdapter(binding.recyclerView, mViewModel.dataHor);

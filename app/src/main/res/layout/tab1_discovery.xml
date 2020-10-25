@@ -12,7 +12,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,7 +79,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView2"
-                tools:text="专题策划" />
+                android:text="专题策划" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -131,6 +131,7 @@
                 app:layout_constraintTop_toTopOf="@+id/recyclerView" />
 
             <TextView
+                android:id="@+id/textView4"
                 android:layout_width="48dp"
                 android:layout_height="12dp"
                 android:text="@{viewModel.dataCol.get(1).title}"
@@ -143,6 +144,7 @@
 
             <ImageView
                 android:id="@+id/imageView3"
+                imageUrl="@{viewModel.dataCol.get(2).image}"
                 android:layout_width="170dp"
                 android:layout_height="91dp"
                 android:layout_marginStart="10dp"
@@ -152,9 +154,10 @@
                 app:layout_constraintTop_toTopOf="@+id/recyclerView" />
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="48dp"
                 android:layout_height="12dp"
-                android:text="文字说明"
+                android:text="@{viewModel.dataCol.get(2).title}"
                 android:textColor="#ffffffff"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView3"
@@ -164,6 +167,7 @@
 
             <ImageView
                 android:id="@+id/imageView4"
+                imageUrl="@{viewModel.dataCol.get(3).image}"
                 android:layout_width="170dp"
                 android:layout_height="91dp"
                 android:layout_marginStart="10dp"
@@ -173,9 +177,10 @@
                 app:layout_constraintTop_toTopOf="@+id/recyclerView" />
 
             <TextView
+                android:id="@+id/textView6"
                 android:layout_width="48dp"
                 android:layout_height="12dp"
-                android:text="文字说明"
+                android:text="@{viewModel.dataCol.get(2).title}"
                 android:textColor="#ffffffff"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView4"
@@ -201,7 +206,7 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="开眼专栏" />
+                android:text="本周榜单" />
 
             <TextView
                 android:id="@+id/tv_more"
@@ -212,7 +217,76 @@
                 app:layout_constraintBottom_toTopOf="@+id/guideline3"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <ImageView
+                android:id="@+id/imageView5"
+                imageUrl="@{viewModel.dataVideo.get(0).getCover().getFeed()}"
+                android:layout_width="178dp"
+                android:layout_height="114dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="144dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="12dp"
+                android:text="@{viewModel.dataVideo.get(0).title}"
+                android:textColor="#ff000000"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.325"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/tv_more" />
+
+            <TextView
+                android:layout_width="99dp"
+                android:layout_height="11dp"
+                android:layout_marginTop="34dp"
+                android:text="@{viewModel.dataVideo.get(0).description}"
+                android:textColor="#ff979797"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.216"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintVertical_bias="0.238" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="931dp" />
+
+            <TextView
+                android:id="@+id/tv_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="23dp"
+                android:fontFamily="@font/noto_sans_bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="推荐主题" />
+
+            <TextView
+                android:id="@+id/tv_more2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="23dp"
+                android:text="查看全部"
+                app:layout_constraintBottom_toTopOf="@+id/guideline3"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/grey"
+                app:layout_constraintTop_toBottomOf="@+id/tv_more2"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

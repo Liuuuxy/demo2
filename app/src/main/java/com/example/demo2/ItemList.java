@@ -57,6 +57,13 @@ public class ItemList {
         @SerializedName("description")
         String description;
 
+        @SerializedName("cover")
+        Cover cover;
+
+        public Cover getCover() {
+            return cover;
+        }
+
         public String getText() {
             return text;
         }
@@ -129,6 +136,14 @@ public class ItemList {
             }
         }
 
+        public class Cover {
+            @SerializedName("feed")
+            String feed;
+
+            public String getFeed() {
+                return feed;
+            }
+        }
     }
 }
 
