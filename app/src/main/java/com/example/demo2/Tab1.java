@@ -46,6 +46,7 @@ public class Tab1 extends Fragment {
 
         mViewModel.dataHor.observe(getViewLifecycleOwner(), data -> {
             CustomViewBinding.bindRecyclerViewAdapter(binding.recyclerView, mViewModel.dataHor);
+            CustomViewBinding.bindRecyclerViewAdapter(binding.recyclerView,mViewModel.dataSqu);
         });
 
     }
