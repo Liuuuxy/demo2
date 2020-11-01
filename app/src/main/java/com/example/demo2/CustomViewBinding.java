@@ -25,18 +25,16 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class CustomViewBinding {
-    @BindingAdapter(value = "data")
+    @BindingAdapter(value = {"data", "type"}, requireAll = false)
     public static void bindRecyclerViewAdapter(RecyclerView recyclerView,
-                                               MutableLiveData<List<Data>> data) {
+                                               MutableLiveData<List<Data>> data, String type) {
         if (recyclerView.getAdapter() == null) {
             recyclerView.setAdapter(new ApplicationAdapter(data.getValue()));
-         //   Log.i("data binding","------"+data.getValue().get(0).getDataType());
             recyclerView.setHasFixedSize(true);
-           if (data.getValue().get(0).getDataType().equals("Banner"))
+            if (type.equals("Banner"))
                 recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false));
-           else if (data.getValue().get(0).getDataType().equals("SquareCard")) {
-                recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 3,GridLayoutManager.HORIZONTAL,false));
-                Log.i("grid","gridlayoutset=======");
+            else if (type.equals("SquareCard")) {
+                recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 3, GridLayoutManager.HORIZONTAL, false));
             }
         } else {
             if (recyclerView.getAdapter() instanceof ApplicationAdapter) {

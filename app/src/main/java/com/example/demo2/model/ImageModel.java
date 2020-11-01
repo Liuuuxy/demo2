@@ -1,7 +1,10 @@
-package com.example.demo2;
+package com.example.demo2.model;
 
 import android.util.Log;
 
+import com.example.demo2.DataCallBack;
+import com.example.demo2.GetRequest_Interface;
+import com.example.demo2.ItemList;
 import com.example.demo2.model.Bean;
 import com.example.demo2.model.Data;
 import com.example.demo2.model.ListOfList;
@@ -43,6 +46,7 @@ public class ImageModel {
         call.enqueue(new Callback<Bean>() {
             @Override
             public void onResponse(Call<Bean> call, Response<Bean> response) {
+                Log.i("bbb","success");
                 newsCallBack.onSuccess(response.body().getItemList());
             }
 
